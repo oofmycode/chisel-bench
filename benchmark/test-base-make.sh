@@ -15,11 +15,7 @@ function crash() {
 }
 
 function compile() {
-  cd $BENCHMARK_DIR
   make src/$BENCHMARK_NAME >& /dev/null || exit 1
-  cp src/$BENCHMARK_NAME $REDUCED_BIN
-  # make clean
-  cd - >& /dev/null
   return 0
 }
 
@@ -33,13 +29,13 @@ environment_libs=("-L$CHISEL_BENCHMARK_HOME/benchmark/lib -lmemwrap"
   "-L$CHISEL_BENCHMARK_HOME/benchmark/lib -lfilewrap")
 
 function main() {
-  for ((i = 0; i < ${#sanitizers[@]}; i++)); do
+  #for ((i = 0; i < ${#sanitizers[@]}; i++)); do
     clean
-    compile "${sanitizers[$i]}" || exit 1
-    desired "${sanitizers[$i]}" || exit 1
+    compile  || exit 1
+    desired  || exit 1
     undesired || exit 1
     clean
-  done
+  #done
 #  for ((i = 0; i < ${#environments[@]}; i++)); do
 #    clean
 #    compile "${environment_libs[$i]}" || exit 1
