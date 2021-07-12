@@ -28,3 +28,6 @@
 [submodule "benchmark/bsysi_chown"]
 	path = benchmark/bsysi_chown
 	url = https://github.com/coreutils/coreutils.git
+[submodule "benchmark/coreutils"]
+	path = benchmark/coreutils
+	url = https://github.com/coreutils/coreutils
